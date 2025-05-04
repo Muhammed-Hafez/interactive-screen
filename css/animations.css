@@ -1,0 +1,121 @@
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px var(--accent-glow), 0 0 10px var(--accent-glow);
+  }
+  50% {
+    box-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
+  }
+  100% {
+    box-shadow: 0 0 5px var(--accent-glow), 0 0 10px var(--accent-glow);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.interactive-point {
+  animation: pulse 2s infinite ease-in-out, glow 2s infinite ease-in-out;
+}
+
+.point-label {
+  animation: fadeIn 0.5s forwards;
+}
+
+.connector-line {
+  width: 0;
+  animation: extendLine 1s forwards ease-out;
+}
+
+@keyframes extendLine {
+  to {
+    width: 100%;
+  }
+}
+
+/* Zoom animations */
+.body-container.zoomed {
+  transition: transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* Staggered animation for benefits list */
+.benefit-item {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.benefit-item.animate {
+  animation: slideIn 0.5s forwards ease-out;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Delay each benefit item */
+.benefit-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.benefit-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.benefit-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.benefit-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.benefit-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.benefit-item:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+/* Product image animation */
+.product-image-container img {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.modal.active .product-image-container img {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0.3s;
+}
