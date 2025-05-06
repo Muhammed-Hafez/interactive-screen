@@ -33,8 +33,8 @@ class ProductModal {
     this.productTitle = document.getElementById("product-title");
     this.benefitsList = document.getElementById("benefits-list");
     this.bodyContainer = document.getElementById("body-container");
-    this.productImage1 = document.getElementById("product-image-2");
-    this.benefitsList1 = document.getElementById("benefits-list-2");
+    // this.productImage1 = document.getElementById("product-image-2");
+    // this.benefitsList1 = document.getElementById("benefits-list-2");
 
     this.setupEventListeners();
   }
@@ -82,9 +82,9 @@ class ProductModal {
     this.productImage.src =
       placeholderImages[pointData.productImage] || pointData.productImage;
     this.productImage.alt = pointData.title;
-    this.productImage1.src =
-      placeholderImages[pointData.productImage1] || pointData.productImage1;
-    this.productImage.alt = pointData.title;
+    // this.productImage1.src =
+    //   placeholderImages[pointData.productImage1] || pointData.productImage1;
+    // this.productImage.alt = pointData.title;
     // Clear and populate benefits list
     this.benefitsList.innerHTML = "";
     pointData.benefits.forEach((benefit) => {
@@ -98,17 +98,17 @@ class ProductModal {
       this.benefitsList.appendChild(benefitItem);
     });
 
-    this.benefitsList1.innerHTML = "";
-    pointData.benefits2.forEach((benefit) => {
-      const benefitItem = document.createElement("li");
-      benefitItem.className = "benefit-item";
+    // this.benefitsList1.innerHTML = "";
+    // pointData.benefits2.forEach((benefit) => {
+    //   const benefitItem = document.createElement("li");
+    //   benefitItem.className = "benefit-item";
 
-      benefitItem.innerHTML = `
-          <div class="benefit-description">${benefit.description}</div>
-        `;
+    //   benefitItem.innerHTML = `
+    //       <div class="benefit-description">${benefit.description}</div>
+    //     `;
 
-      this.benefitsList1.appendChild(benefitItem);
-    });
+    //   this.benefitsList1.appendChild(benefitItem);
+    // });
   }
 
   zoomToPoint(pointElement) {
