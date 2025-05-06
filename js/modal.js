@@ -155,12 +155,12 @@ class ProductModal {
     });
   }
 
-  animateBenefits1() {
-    const benefitItems = this.benefitsList1.querySelectorAll(".benefit-item");
-    benefitItems.forEach((item) => {
-      item.classList.add("animate");
-    });
-  }
+  // animateBenefits1() {
+  //   const benefitItems = this.benefitsList1.querySelectorAll(".benefit-item");
+  //   benefitItems.forEach((item) => {
+  //     item.classList.add("animate");
+  //   });
+  // }
 }
 
 // Create singleton instance
