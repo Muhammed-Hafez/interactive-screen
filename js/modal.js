@@ -1,3 +1,29 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const buttons = document.querySelectorAll(".productBtns .product");
+  const infos = document.querySelectorAll(".modal-body .info");
+
+  buttons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      const selectedInfo = infos[index];
+      const isVisible = !selectedInfo.classList.contains("hidden");
+
+      // لو ظاهر، نخفيه
+      if (isVisible) {
+        selectedInfo.classList.add("hidden");
+      } else {
+        // لو مش ظاهر، نظهره ونخفي الباقيين
+        infos.forEach((info, i) => {
+          if (i === index) {
+            info.classList.remove("hidden");
+          } else {
+            info.classList.add("hidden");
+          }
+        });
+      }
+    });
+  });
+});
+
 // Modal functionality
 class ProductModal {
   constructor() {
@@ -53,7 +79,6 @@ class ProductModal {
     this.productImage.src =
       placeholderImages[pointData.productImage] || pointData.productImage;
     this.productImage.alt = pointData.title;
-
     // Clear and populate benefits list
     this.benefitsList.innerHTML = "";
     pointData.benefits.forEach((benefit) => {

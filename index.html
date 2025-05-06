@@ -3,79 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Julphar Interactive Body Portfolio</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/modal.css" />
     <link rel="stylesheet" href="css/animations.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
+    <title>Home</title>
   </head>
-  <body>
-    <div id="video-splash">
-      <video id="intro-video" autoplay muted>
-        <source
-          src="4k-human-male-full-body-horizontal-medical-scan-pr-2024-08-.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
+  <header>
+    <div class="btns">
+      <a href="#">
+        <button class="homebtn">
+          <img src="imgs/Home-icon.png" alt="home" />
+        </button>
+      </a>
+      <a href="index-2.html">
+        <button class="portbtn">
+          <img src="imgs/Portfolio-icon.png" alt="icon" />
+        </button>
+      </a>
     </div>
+  </header>
+  <body>
     <div class="app-container">
       <main id="main-content">
+        <div class="intro">
+          <p class="p-intro">
+            Welcome to Julphar, a leading Emirati pharmaceutical manufacturer,
+            committed to innovation and excellence, we offer a diverse product
+            portfolio addressing various disease areas and unmet needs for
+            patients and healthcare providers across the MENA region.
+          </p>
+        </div>
         <div id="body-container" class="body-container">
           <img
             id="body-image"
-            src="human.jpg"
+            src="imgs/Factory-Frame.jpg"
             alt="Human Body Visualization"
             class="body-image"
           />
-
-          <!-- Interactive points and labels will be added by JavaScript -->
-          <div id="interactive-points"></div>
-        </div>
-
-        <!-- Modal container -->
-        <div id="product-modal" class="modal">
-          <div class="modal-content">
-            <button id="back-button" class="back-button">
-              <span class="arrow">←</span> Back
-            </button>
-            <div class="modal-body">
-              <button id="up" class="up">
-                <img src="imgs/up.png" alt="" />
-              </button>
-              <div id="slide1" class="slide1">
-                <div class="productimg">
-                  <img src="imgs/packs.png" alt="" />
-                </div>
-              </div>
-              <div id="slide2" class="slide2">
-                <div class="product-image-container">
-                  <img id="product-image" src="" alt="Medicine Product" />
-                </div>
-                <div class="product-info">
-                  <h2 id="product-title">Product Title</h2>
-                  <div class="benefits-container">
-                    <h3>ROSALIS</h3>
-                    <ul id="benefits-list" class="benefits-list">
-                      <!-- Benefits will be populated by JavaScript -->
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <button id="down" class="down">
-                <img src="imgs/down.png" alt="" />
-              </button>
-            </div>
-          </div>
         </div>
       </main>
     </div>
-
     <script src="js/config.js"></script>
-    <script src="js/modal.js"></script>
-    <script src="js/main.js"></script>
   </body>
 </html>

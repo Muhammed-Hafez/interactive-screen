@@ -34,43 +34,61 @@ body {
 .app-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   width: 100vw;
   position: relative;
 }
 
+button {
+  background: transparent;
+  border: none;
+}
+
+.intro {
+  position: absolute;
+  bottom: 20%;
+  left: 16%;
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+  font-size: 3rem;
+  color: rgb(21, 133, 177);
+  font-weight: 500;
+}
+
 /* Header Styles */
 header {
+  position: absolute;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: var(--spacing-md);
-  background: rgba(10, 37, 64, 0.8);
   backdrop-filter: blur(10px);
   z-index: 100;
 }
 
-.logo {
-  font-size: 28px;
-  font-weight: 600;
-  color: var(--text-light);
-  letter-spacing: 1px;
+.btns img {
+  width: 70px;
 }
 
-.reset-button {
-  background: rgba(0, 229, 255, 0.2);
-  border: 1px solid var(--accent-color);
-  color: var(--accent-color);
-  padding: var(--spacing-xs) var(--spacing-md);
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  font-weight: 500;
-  transition: all var(--transition-speed);
+.homebtn {
+  position: absolute;
+  left: 190px;
+  top: 100px;
+  background: transparent;
+  border: none;
 }
 
-.reset-button:hover {
-  background: rgba(0, 229, 255, 0.3);
-  box-shadow: 0 0 12px rgba(0, 229, 255, 0.5);
+.portbtn {
+  position: absolute;
+  left: 820px;
+  top: 100px;
+  background: transparent;
+  border: none;
+}
+
+.homebtn:hover,
+.portbtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4);
 }
 
 /* Main Content */
@@ -85,7 +103,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   transition: transform 0.8s ease;
 }
 

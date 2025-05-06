@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Julphar Interactive Body Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <header>
+    <div class="btns">
+      <a href="index.html">
+        <button class="homebtn">
+          <img src="imgs/Home-icon.png" alt="home" />
+        </button>
+      </a>
+      <a href="index-2.html">
+        <button class="portbtn">
+          <img src="imgs/Portfolio-icon.png" alt="icon" />
+        </button>
+      </a>
+    </div>
+  </header>
+  <body>
+    <div id="video-splash">
+      <video id="intro-video" autoplay muted>
+        <source src="imgs/Movie-Human body + Frame.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="app-container">
+      <main id="main-content">
+        <div id="body-container" class="body-container">
+          <img
+            id="body-image"
+            src="imgs/human.jpg"
+            alt="Human Body Visualization"
+            class="body-image"
+          />
+
+          <!-- Interactive points and labels will be added by JavaScript -->
+          <div id="interactive-points"></div>
+        </div>
+
+        <!-- Modal container -->
+        <div id="product-modal" class="modal">
+          <div class="modal-content">
+            <button id="back-button" class="back-button">
+              <img src="imgs/Back-Button.png" alt="back" />
+            </button>
+            <div class="modal-body">
+              <div class="productBtns">
+                <!-- Product 1 Button -->
+                <button id="product1" class="product">
+                  <img src="imgs/D-icon.png" alt="img" />
+                </button>
+                <div id="info1" class="info hidden">
+                  <div class="product-image-container">
+                    <img id="product-image" src="" alt="Medicine Product" />
+                  </div>
+                  <div class="product-info">
+                    <h2 id="product-title">Product Title</h2>
+                    <div class="benefits-container">
+                      <ul id="benefits-list" class="benefits-list">
+                        <!-- Benefits will be populated by JavaScript -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 2 Button -->
+                <button id="product2" class="product">
+                  <img src="imgs/D-icon.png" alt="img" />
+                </button>
+                <div id="info2" class="info hidden">
+                  <div class="product-image-container">
+                    <img
+                      id="product-image-2"
+                      src="imgs/Wound-Healing.jpg"
+                      alt="Medicine Product"
+                    />
+                  </div>
+                  <div class="product-info">
+                    <div class="benefits-container">
+                      <ul id="benefits-list-2" class="benefits-list">
+                        <li class="benefit-item animate">
+                          <div class="benefit-description">
+                            • Healthy men and women (n=17,802) with LDL-C
+                            &lt;130 mg/dL (3.4 mmol/L) and hs-CRP ≥2.0 mg/L.7<br />
+                            • Received Rosuvastatin, 20 mg daily, or
+                            placebo.7<br />
+                            • Follow-up for the occurrence of the combined
+                            primary end point of myocardial infarction, stroke,
+                            arterial revascularization, hospitalization for
+                            unstable angina, or death from cardiovascular
+                            causes.7<br />
+                            • Median follow-up of 1.9 years (maximum 5
+                            years).7<br />
+                            • Rosuvastatin reduced LDL-C levels by 50% and high-
+                            sensitivity C-reactive protein (hs-CRP) levels by
+                            37%.8
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 3 Button -->
+                <button id="product3" class="product">
+                  <img src="imgs/D-icon.png" alt="img" />
+                </button>
+                <div id="info3" class="info hidden">
+                  <div class="product-image-container">
+                    <img
+                      id="product-image-3"
+                      src="imgs/Dermatology-v1.png"
+                      alt="Medicine Product"
+                    />
+                  </div>
+                  <div class="product-info">
+                    <div class="benefits-container">
+                      <ul id="benefits-list-3" class="benefits-list">
+                        <li class="benefit-item animate">
+                          <div class="benefit-description">
+                            • Healthy men and women (n=17,802) with LDL-C
+                            &lt;130 mg/dL (3.4 mmol/L) and hs-CRP ≥2.0 mg/L.7<br />
+                            • Received Rosuvastatin, 20 mg daily, or
+                            placebo.7<br />
+                            • Follow-up for the occurrence of the combined
+                            primary end point of myocardial infarction, stroke,
+                            arterial revascularization, hospitalization for
+                            unstable angina, or death from cardiovascular
+                            causes.7<br />
+                            • Median follow-up of 1.9 years (maximum 5
+                            years).7<br />
+                            • Rosuvastatin reduced LDL-C levels by 50% and high-
+                            sensitivity C-reactive protein (hs-CRP) levels by
+                            37%.8
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
