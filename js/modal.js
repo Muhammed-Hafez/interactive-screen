@@ -33,6 +33,8 @@ class ProductModal {
     this.productTitle = document.getElementById("product-title");
     this.benefitsList = document.getElementById("benefits-list");
     this.bodyContainer = document.getElementById("body-container");
+    this.productImage1 = document.getElementById("product-image-2");
+    this.benefitsList1 = document.getElementById("benefits-list-2");
 
     this.setupEventListeners();
   }
@@ -57,6 +59,7 @@ class ProductModal {
     setTimeout(() => {
       this.modal.classList.add("active");
       this.animateBenefits();
+      this.animateBenefits1();
     }, 600); // Delay to allow zoom animation to complete
   }
 
@@ -79,6 +82,9 @@ class ProductModal {
     this.productImage.src =
       placeholderImages[pointData.productImage] || pointData.productImage;
     this.productImage.alt = pointData.title;
+    this.productImage1.src =
+      placeholderImages[pointData.productImage1] || pointData.productImage1;
+    this.productImage.alt = pointData.title;
     // Clear and populate benefits list
     this.benefitsList.innerHTML = "";
     pointData.benefits.forEach((benefit) => {
@@ -90,6 +96,18 @@ class ProductModal {
         `;
 
       this.benefitsList.appendChild(benefitItem);
+    });
+
+    this.benefitsList1.innerHTML = "";
+    pointData.benefits2.forEach((benefit) => {
+      const benefitItem = document.createElement("li");
+      benefitItem.className = "benefit-item";
+
+      benefitItem.innerHTML = `
+          <div class="benefit-description">${benefit.description}</div>
+        `;
+
+      this.benefitsList1.appendChild(benefitItem);
     });
   }
 
@@ -108,15 +126,37 @@ class ProductModal {
     // Apply zoom transformation
     this.bodyContainer.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(2.5)`;
     this.bodyContainer.classList.add("zoomed");
+
+    const btns = document.querySelectorAll(".btns");
+    btns.forEach((btn) => {
+      btn.classList.add("hidden");
+    });
+
+    const overlay = document.getElementById("overlay");
+    overlay.classList.remove("hidden");
   }
 
   resetZoom() {
     this.bodyContainer.style.transform = "translate(0, 0) scale(1)";
     this.bodyContainer.classList.remove("zoomed");
+    const btns = document.querySelectorAll(".btns");
+    btns.forEach((btn) => {
+      btn.classList.remove("hidden");
+    });
+
+    const overlay = document.getElementById("overlay");
+    overlay.classList.add("hidden");
   }
 
   animateBenefits() {
     const benefitItems = this.benefitsList.querySelectorAll(".benefit-item");
+    benefitItems.forEach((item) => {
+      item.classList.add("animate");
+    });
+  }
+
+  animateBenefits1() {
+    const benefitItems = this.benefitsList1.querySelectorAll(".benefit-item");
     benefitItems.forEach((item) => {
       item.classList.add("animate");
     });

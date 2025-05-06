@@ -17,13 +17,17 @@
     visibility var(--transition-speed);
 }
 
+.hidden {
+  display: none;
+}
+
 .modal.active {
   opacity: 1;
   visibility: visible;
 }
 
 .modal-content {
-  background-color: #0f3a5f59;
+  background-color: #071c2d9c;
   border-radius: var(--border-radius);
   width: 90%;
   max-width: 900px;
@@ -153,10 +157,6 @@
 
 .productimg img {
   width: 100%;
-}
-
-.hidden {
-  display: none;
 }
 
 .product {

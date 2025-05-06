@@ -13,7 +13,7 @@
     />
   </head>
   <header>
-    <div class="btns">
+    <div class="btns" class="hidden">
       <a href="index.html">
         <button class="homebtn">
           <img src="imgs/Home-icon.png" alt="home" />
@@ -27,12 +27,14 @@
     </div>
   </header>
   <body>
-    <div id="video-splash">
+    <div id="overlay" class="hidden"></div>
+
+    <!-- <div id="video-splash">
       <video id="intro-video" autoplay muted>
         <source src="imgs/video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-    </div>
+    </div> -->
     <div class="app-container">
       <main id="main-content">
         <div id="body-container" class="body-container">
@@ -79,34 +81,11 @@
                 </button>
                 <div id="info2" class="info hidden">
                   <div class="product-image-container">
-                    <img
-                      id="product-image-2"
-                      src="imgs/Wound-Healing.jpg"
-                      alt="Medicine Product"
-                    />
+                    <img id="product-image-2" src="" alt="Medicine Product" />
                   </div>
                   <div class="product-info">
                     <div class="benefits-container">
-                      <ul id="benefits-list-2" class="benefits-list">
-                        <li class="benefit-item animate">
-                          <div class="benefit-description">
-                            • Healthy men and women (n=17,802) with LDL-C
-                            &lt;130 mg/dL (3.4 mmol/L) and hs-CRP ≥2.0 mg/L.7<br />
-                            • Received Rosuvastatin, 20 mg daily, or
-                            placebo.7<br />
-                            • Follow-up for the occurrence of the combined
-                            primary end point of myocardial infarction, stroke,
-                            arterial revascularization, hospitalization for
-                            unstable angina, or death from cardiovascular
-                            causes.7<br />
-                            • Median follow-up of 1.9 years (maximum 5
-                            years).7<br />
-                            • Rosuvastatin reduced LDL-C levels by 50% and high-
-                            sensitivity C-reactive protein (hs-CRP) levels by
-                            37%.8
-                          </div>
-                        </li>
-                      </ul>
+                      <ul id="benefits-list-2" class="benefits-list"></ul>
                     </div>
                   </div>
                 </div>
