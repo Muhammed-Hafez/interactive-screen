@@ -25,14 +25,16 @@ function insertCustomArrowImages() {
       left: "50%",
       top: "15%",
       labelImage: "imgs/D-icon.png",
-      products: [
-        {
-          title: "Product 1",
-          image: "imgs/pack.png",
-          benefits: [
-            "Benefit 1 description",
-            "Benefit 2 description"
-          ]
+      data: {
+        productImage: "imgs/Dermatology-v1.png",
+        benefits: [
+          {
+            title: "Feature 5",
+            description:
+              "• Healthy men and women (n=17,802) with LDL-C <130 mg/dL (3.4 mmol/L) and hs-CRP ≥2.0 mg/L.7<br> • Received Rosuvastatin, 20 mg daily, or placebo.7<br> • Follow-up for the occurrence of the combined primary end point of myocardial infarction, stroke, arterial revascularization, hospitalization for unstable angina, or death from cardiovascular causes.7<br> • Median follow-up of 1.9 years (maximum 5 years).7<br> • Rosuvastatin reduced LDL-C levels by 50% and high- sensitivity C-reactive protein (hs-CRP) levels by 37%.8",
+          },
+        ],
+      },
     },
     {
       id: 2,
