@@ -115,30 +115,30 @@ main {
 /* Interactive Points */
 .interactive-point {
   position: absolute;
-  width: 12px;
-  height: 12px;
-  background-color: var(--accent-color);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
   cursor: pointer;
   z-index: 10;
 }
 
 .point-label {
   position: absolute;
-  color: var(--accent-color);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  font-size: 22px;
-  font-weight: 500;
   cursor: pointer;
+  padding: 0.8rem;
   z-index: 20;
-  transition: all var(--transition-speed);
 }
 
-.point-label:hover {
+.point-label,
+.custom-arrow,
+.point-label:active,
+.custom-arrow:active,
+.point-label:focus,
+.custom-arrow:focus {
+  -webkit-tap-highlight-color: transparent; /* للموبايل */
+}
+
+/* .point-label:hover {
   transform: scale(1.05);
   box-shadow: var(--shadow-medium), 0 0 12px var(--accent-glow);
-}
+} */
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

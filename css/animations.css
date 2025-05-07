@@ -46,19 +46,6 @@
   }
 }
 
-.interactive-point {
-  animation: pulse 2s infinite ease-in-out, glow 2s infinite ease-in-out;
-}
-
-.point-label {
-  animation: fadeIn 0.5s forwards;
-}
-
-.connector-line {
-  width: 0;
-  animation: extendLine 1s forwards ease-out;
-}
-
 @keyframes extendLine {
   to {
     width: 100%;

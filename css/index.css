@@ -1,0 +1,19 @@
+.frame-container {
+  position: relative;
+  height: auto;
+}
+
+.frame-img {
+  width: 100%;
+  display: block;
+}
+
+.video-inside-frame {
+  position: absolute;
+  top: 15%; /* اضبط حسب شكل الفريم */
+  left: 12%;
+  width: 75%;
+  height: 70%;
+  object-fit: cover;
+  z-index: 1;
+}

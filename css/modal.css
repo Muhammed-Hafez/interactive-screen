@@ -55,7 +55,7 @@
 }
 
 .back-button img {
-  width: 175px;
+  width: 135px;
 }
 
 .back-button:hover {
@@ -120,7 +120,6 @@
   padding: 0;
   margin: 0;
   overflow-y: auto;
-  max-height: 300px;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
@@ -144,11 +143,15 @@
 }
 
 .benefit-description {
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1.5;
-  text-align: justify;
   color: var(--text-secondary);
-  line-height: 30px;
+  font-weight: 800;
+}
+
+.info {
+  padding: 1rem;
+  width: 100%;
 }
 
 .productimg {
@@ -165,4 +168,18 @@
 
 .product img {
   margin: 0.8rem;
+  width: 80%;
+}
+
+.productBtns .product {
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.productBtns .product.shrink {
+  transform: scale(0.6);
+  opacity: 0.5;
+}
+
+.productBtns .product.shrink img {
+  margin: 0;
 }

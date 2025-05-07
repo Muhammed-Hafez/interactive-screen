@@ -1,66 +1,54 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const buttons = document.querySelectorAll(".productBtns .product");
-  const infos = document.querySelectorAll(".modal-body .info");
+// JavaScript - Product Modal with Zoom and Clean Structure
 
-  buttons.forEach((button, index) => {
-    button.addEventListener("click", () => {
-      const selectedInfo = infos[index];
-      const isVisible = !selectedInfo.classList.contains("hidden");
-
-      // لو ظاهر، نخفيه
-      if (isVisible) {
-        selectedInfo.classList.add("hidden");
-      } else {
-        // لو مش ظاهر، نظهره ونخفي الباقيين
-        infos.forEach((info, i) => {
-          if (i === index) {
-            info.classList.remove("hidden");
-          } else {
-            info.classList.add("hidden");
-          }
-        });
-      }
-    });
-  });
-});
-
-// Modal functionality
 class ProductModal {
   constructor() {
     this.modal = document.getElementById("product-modal");
     this.backButton = document.getElementById("back-button");
-    this.productImage = document.getElementById("product-image");
     this.productTitle = document.getElementById("product-title");
-    this.benefitsList = document.getElementById("benefits-list");
     this.bodyContainer = document.getElementById("body-container");
-    // this.productImage1 = document.getElementById("product-image-2");
-    // this.benefitsList1 = document.getElementById("benefits-list-2");
+    this.overlay = document.getElementById("overlay");
+
+    this.sections = [
+      {
+        imageEl: document.getElementById("product-image"),
+        benefitsListEl: document.getElementById("benefits-list"),
+        imageKey: "productImage",
+        benefitsKey: "benefits",
+      },
+      {
+        imageEl: document.getElementById("product-image-2"),
+        benefitsListEl: document.getElementById("benefits-list-2"),
+        imageKey: "productImage1",
+        benefitsKey: "benefits2",
+      },
+      {
+        imageEl: document.getElementById("product-image-3"),
+        benefitsListEl: document.getElementById("benefits-list-3"),
+        imageKey: "productImage2",
+        benefitsKey: "benefits3",
+      },
+    ];
 
     this.setupEventListeners();
   }
 
   setupEventListeners() {
     this.backButton.addEventListener("click", () => this.closeModal());
-
-    // Close modal on escape key
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") this.closeModal();
     });
   }
 
   openModal(pointData, pointElement) {
-    // Calculate zoom position and scale
     this.zoomToPoint(pointElement);
-
-    // Populate modal with data
     this.populateModal(pointData);
 
-    // Show modal with animation
     setTimeout(() => {
       this.modal.classList.add("active");
-      this.animateBenefits();
-      this.animateBenefits1();
-    }, 600); // Delay to allow zoom animation to complete
+      this.sections.forEach((section) =>
+        this.animateItems(section.benefitsListEl)
+      );
+    }, 600);
   }
 
   closeModal() {
@@ -70,98 +58,129 @@ class ProductModal {
     // Reset zoom
     setTimeout(() => {
       this.resetZoom();
-    }, 300); // Delay to allow modal to fade out
+    }, 300);
+
+    // ❗️إخفاء كل أقسام البيانات (info)
+    const infos = document.querySelectorAll(".modal-body .info");
+    infos.forEach((info) => {
+      info.classList.add("hidden");
+    });
+
+    // ❗️إرجاع الزرائر لو كان فيها تصغير أو إخفاء
+    const buttons = document.querySelectorAll(".productBtns .product");
+    buttons.forEach((button) => {
+      button.classList.remove("shrink"); // لو كنت مصغّرهم بكلاس معين
+    });
   }
 
   populateModal(pointData) {
-    // Set product title
     this.productTitle.textContent = pointData.title;
 
-    // Set product image
-    // Using placeholders from config
-    this.productImage.src =
-      placeholderImages[pointData.productImage] || pointData.productImage;
-    this.productImage.alt = pointData.title;
-    // this.productImage1.src =
-    //   placeholderImages[pointData.productImage1] || pointData.productImage1;
-    // this.productImage.alt = pointData.title;
-    // Clear and populate benefits list
-    this.benefitsList.innerHTML = "";
-    pointData.benefits.forEach((benefit) => {
-      const benefitItem = document.createElement("li");
-      benefitItem.className = "benefit-item";
-
-      benefitItem.innerHTML = `
-          <div class="benefit-description">${benefit.description}</div>
-        `;
-
-      this.benefitsList.appendChild(benefitItem);
+    this.sections.forEach((section) => {
+      const imageSrc = pointData[section.imageKey];
+      const benefits = pointData[section.benefitsKey];
+      this.populateSection(
+        section.imageEl,
+        imageSrc,
+        pointData.title,
+        section.benefitsListEl,
+        benefits
+      );
     });
+  }
 
-    // this.benefitsList1.innerHTML = "";
-    // pointData.benefits2.forEach((benefit) => {
-    //   const benefitItem = document.createElement("li");
-    //   benefitItem.className = "benefit-item";
+  populateSection(imageEl, imgSrc, title, listEl, benefitsArray) {
+    imageEl.src = placeholderImages[imgSrc] || imgSrc;
+    imageEl.alt = title;
+    listEl.innerHTML = "";
 
-    //   benefitItem.innerHTML = `
-    //       <div class="benefit-description">${benefit.description}</div>
-    //     `;
+    benefitsArray.forEach((benefit) => {
+      const li = document.createElement("li");
+      li.className = "benefit-item";
+      li.innerHTML = `<div class="benefit-description">${benefit.description}</div>`;
+      listEl.appendChild(li);
+    });
+  }
 
-    //   this.benefitsList1.appendChild(benefitItem);
-    // });
+  animateItems(container) {
+    const items = container.querySelectorAll(".benefit-item");
+    items.forEach((item) => item.classList.add("animate"));
   }
 
   zoomToPoint(pointElement) {
     const rect = pointElement.getBoundingClientRect();
     const containerRect = this.bodyContainer.getBoundingClientRect();
 
-    // Calculate center position of the point relative to the container
-    const pointCenterX = rect.left + rect.width / 2 - containerRect.left;
-    const pointCenterY = rect.top + rect.height / 2 - containerRect.top;
+    const offsetX =
+      containerRect.width / 2 -
+      (rect.left + rect.width / 2 - containerRect.left);
+    const offsetY =
+      containerRect.height / 2 -
+      (rect.top + rect.height / 2 - containerRect.top);
 
-    // Calculate the position to center the point
-    const offsetX = containerRect.width / 2 - pointCenterX;
-    const offsetY = containerRect.height / 2 - pointCenterY;
-
-    // Apply zoom transformation
     this.bodyContainer.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(2.5)`;
     this.bodyContainer.classList.add("zoomed");
 
-    const btns = document.querySelectorAll(".btns");
-    btns.forEach((btn) => {
-      btn.classList.add("hidden");
-    });
-
-    const overlay = document.getElementById("overlay");
-    overlay.classList.remove("hidden");
+    document
+      .querySelectorAll(".btns")
+      .forEach((btn) => btn.classList.add("hidden"));
+    this.overlay.classList.remove("hidden");
   }
 
   resetZoom() {
     this.bodyContainer.style.transform = "translate(0, 0) scale(1)";
     this.bodyContainer.classList.remove("zoomed");
-    const btns = document.querySelectorAll(".btns");
-    btns.forEach((btn) => {
+
+    document.querySelectorAll(".btns").forEach((btn) => {
       btn.classList.remove("hidden");
+      btn.classList.add("reappear"); // Optional class for animation
+      setTimeout(() => btn.classList.remove("reappear"), 300);
     });
 
-    const overlay = document.getElementById("overlay");
-    overlay.classList.add("hidden");
+    this.overlay.classList.add("hidden");
   }
-
-  animateBenefits() {
-    const benefitItems = this.benefitsList.querySelectorAll(".benefit-item");
-    benefitItems.forEach((item) => {
-      item.classList.add("animate");
-    });
-  }
-
-  // animateBenefits1() {
-  //   const benefitItems = this.benefitsList1.querySelectorAll(".benefit-item");
-  //   benefitItems.forEach((item) => {
-  //     item.classList.add("animate");
-  //   });
-  // }
 }
 
 // Create singleton instance
 const productModal = new ProductModal();
+
+// Buttons behavior inside modal (switching content)
+document.addEventListener("DOMContentLoaded", function () {
+  const buttons = document.querySelectorAll(".productBtns .product");
+  const infos = document.querySelectorAll(".modal-body .info");
+
+  buttons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      const selectedInfo = infos[index];
+      const isVisible = !selectedInfo.classList.contains("hidden");
+
+      // لو ظاهر، نخفيه ونرجّع الزرائر لطبيعتها
+      if (isVisible) {
+        selectedInfo.classList.add("hidden");
+
+        // نرجع كل الزرائر لحجمها الطبيعي
+        buttons.forEach((btn) => {
+          btn.classList.remove("shrink");
+        });
+      } else {
+        // لو مش ظاهر، نظهره ونخفي الباقيين
+        infos.forEach((info, i) => {
+          if (i === index) {
+            info.classList.remove("hidden");
+          } else {
+            info.classList.add("hidden");
+          }
+        });
+
+        // نصغر الزرارين التانيين
+        buttons.forEach((btn, i) => {
+          if (i !== index) {
+            btn.classList.add("shrink");
+          } else {
+            btn.classList.remove("shrink");
+          }
+        });
+      }
+    });
+  });
+});
