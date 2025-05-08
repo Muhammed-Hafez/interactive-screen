@@ -27,9 +27,34 @@ body {
   position: absolute;
   top: 15%; /* اضبط حسب شكل الفريم */
   left: 100px;
-  width: 880px;
-  height: 80%;
+  width: 82%;
   object-fit: cover;
   z-index: 1;
   border: none;
+}
+
+.intro-p {
+  position: absolute;
+  top: 55%;
+  left: 12%;
+  width: 70%;
+  font-size: 3rem;
+  white-space: normal;
+}
+
+#typewriter {
+  overflow: hidden;
+  width: fit-content;
+  animation: blink-caret 0s step-end;
+  will-change: contents;
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
 }
