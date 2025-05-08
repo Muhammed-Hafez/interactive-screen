@@ -22,7 +22,7 @@ function insertCustomArrowImages() {
     {
       id: 1,
       src: "imgs/Untitled-1-01.png",
-      left: "54%",
+      left: "50%",
       top: "19%",
       labelImage: "imgs/D-icon.png",
       data: {
